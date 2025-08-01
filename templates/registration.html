@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="static/css/register.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+    {% if msg %}
+    <script>
+      alert("{{ msg }}");
+    </script>
+    {% endif %}
+
+    <div>
+      <button
+        onclick="location.href='/'"
+        class="bg-slate-800 text-white px-4 py-2 m-5 rounded"
+      >
+        Back to homepage
+      </button>
+    </div>
+
+    <div class="max-w-xl mx-auto bg-white p-8 rounded shadow-md">
+      <h2 class="text-2xl font-bold mb-6 text-center">User Registration</h2>
+
+      <form method="post">
+        {% csrf_token %}
+
+        <input
+          type="text"
+          name="username"
+          placeholder="Name"
+          required
+          class="border border-gray-400 w-full px-3 py-2 mb-3 rounded"
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          class="border border-gray-400 w-full px-3 py-2 mb-3 rounded"
+        />
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+          class="border border-gray-400 w-full px-3 py-2 mb-3 rounded"
+        />
+
+        <input
+          type="password"
+          name="confirm_password"
+          placeholder="Confirm Password"
+          required
+          class="border border-gray-400 w-full px-3 py-2 mb-3 rounded"
+        />
+
+        <fieldset class="border border-gray-300 p-4 rounded mb-4">
+          <legend class="text-lg font-semibold mb-2">
+            Select Your Favorite Genres
+          </legend>
+          <div class="grid grid-cols-2 gap-2 text-sm"></div>
+        </fieldset>
+         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-left">
+                    <label><input type="checkbox" name="genre" value="Action" /> Action</label>
+                    <label><input type="checkbox" name="genre" value="Adventure" /> Adventure</label>
+                    <label><input type="checkbox" name="genre" value="Animation" /> Animation</label>
+                    <label><input type="checkbox" name="genre" value="Biography" /> Biography</label>
+                    <label><input type="checkbox" name="genre" value="Comedy" /> Comedy</label>
+                    <label><input type="checkbox" name="genre" value="Crime" /> Crime</label>
+                    <label><input type="checkbox" name="genre" value="Documentary" /> Documentary</label>
+                    <label><input type="checkbox" name="genre" value="Drama" /> Drama</label>
+                    <label><input type="checkbox" name="genre" value="Family" /> Family</label>
+                    <label><input type="checkbox" name="genre" value="Fantasy" /> Fantasy</label>
+                    <label><input type="checkbox" name="genre" value="History" /> History</label>
+                    <label><input type="checkbox" name="genre" value="Horror" /> Horror</label>
+                    <label><input type="checkbox" name="genre" value="Musical" /> Musical</label>
+                    <label><input type="checkbox" name="genre" value="Mystery" /> Mystery</label>
+                    <label><input type="checkbox" name="genre" value="Romance" /> Romance</label>
+                    <label><input type="checkbox" name="genre" value="Sci-Fi" /> Sci-Fi</label>
+                    <label><input type="checkbox" name="genre" value="Sport" /> Sport</label>
+                    <label><input type="checkbox" name="genre" value="Thriller" /> Thriller</label>
+                    <label><input type="checkbox" name="genre" value="War" /> War</label>
+                    <label><input type="checkbox" name="genre" value="Western" /> Western</label>
+                </div>
+          
+        <button
+          type="submit"
+          class="bg-blue-600 text-white px-4 py-2 rounded w-full hover:bg-blue-700 transition"
+        >
+          Signup
+        </button>
+      </form>
+
+      <p class="text-center mt-4 text-sm">
+        Already have an account?
+        <a href="/login" class="text-blue-500 hover:underline">Sign in</a>
+      </p>
+    </div>
+  </body>
+</html>

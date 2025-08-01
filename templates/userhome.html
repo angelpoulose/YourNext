@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Userhome</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-950 text-white ">
+    <h1 class="text-center text-2xl font-bold mt-40">Welcome {{ user.username }}</h1>
+    <div class="flex gap-2 py-5 px-40">
+    {% if movies %}
+    {% for m in movies %}
+    <div class="mx-auto bg-slate-800 block w-[220px] text-white py-2 rounded-lg shadow-none hover:shadow-lg hover:scale-105 transition-all duration-500 ease-in-out">
+        <img class="w-40 mx-auto" src="{{ m.image }}" alt="">
+        <p class="text-bold text-center">{{ m.title }} <span class="text-normal">{{m.year}}</span></p>
+        <p class="text-xs text-justify text-gray-500">{{ m.plot }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% if books %}
+    {% for b in books %}
+    <div class="mx-auto block w-[220px] text-white py-2 rounded-lg shadow-none hover:shadow-lg hover:scale-105 transition-all duration-500 ease-in-out">
+        <img class="w-40 mx-auto" src="{{ b.cover }}" alt="">
+        <p class="text-bold text-center">{{ b.title }}</p>
+        <p class="text-xs text-justify text-gray-500">{{ b.authors }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    </div>
+    <form method="post" class="w-fit mx-auto" >
+        {% csrf_token %}
+        <textarea name="query" placeholder="Prompt" class="border p-2 rounded-xl w-80 border-gray-500 mt-20" id=""></textarea>
+        <button type="submit" class="border border-gray-500 bg-gray-400 my-2 px-2 py-1 w-50 rounded-lg mx-auto block" >Submit</button>
+    </form>
+</body>
+</html>
